@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Alumni Website - Alumni Directory</title>
+    <!-- Add your styles or link to a separate CSS file if needed -->
+    <style>
+        /* Add your styles here */
+        form {
+            margin-top: 20px;
+        }
+
+        #directory {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>School Alumni Website</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="alumni.html">Alumni Directory</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Alumni Directory</h2>
+
+            <!-- Registration and Profile Creation Form -->
+            <form id="registrationForm">
+                <label for="fullName">Full Name:</label>
+                <input type="text" id="fullName" name="fullName" required>
+
+                <label for="graduationYear">Graduation Year:</label>
+                <input type="text" id="graduationYear" name="graduationYear" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <button type="button" onclick="registerAlumni()">Register</button>
+            </form>
+
+            <!-- Alumni Directory Display -->
+            <div id="directory">
+                <h3>Alumni Directory</h3>
+                <!-- Alumni profiles will be displayed here -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 School Alumni. All rights reserved.</p>
+    </footer>
+
+    <!-- Add your JavaScript code for handling registration and displaying profiles -->
+    <script>
+        function registerAlumni() {
+            // Get form values
+            var fullName = document.getElementById('fullName').value;
+            var graduationYear = document.getElementById('graduationYear').value;
+            var email = document.getElementById('email').value;
+
+            // Create a new alumni profile
+            var alumniProfile = {
+                fullName: fullName,
+                graduationYear: graduationYear,
+                email: email
+            };
+
+            // Display the new profile in the directory
+            displayAlumniProfile(alumniProfile);
+
+            // Clear the form
+            document.getElementById('registrationForm').reset();
+        }
+
+        function displayAlumniProfile(profile) {
+            // Create a new div for the profile
+            var profileDiv = document.createElement('div');
+            profileDiv.className = 'alumni-profile';
+
+            // Populate the div with profile information
+            profileDiv.innerHTML = `
+                <p><strong>Name:</strong> ${profile.fullName}</p>
+                <p><strong>Graduation Year:</strong> ${profile.graduationYear}</p>
+                <p><strong>Email:</strong> ${profile.email}</p>
+                <hr>
+            `;
+
+            // Append the profile to the directory
+            document.getElementById('directory').appendChild(profileDiv);
+        }
+    </script>
+</body>
+
+</html>
